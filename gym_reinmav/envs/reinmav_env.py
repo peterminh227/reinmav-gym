@@ -49,7 +49,7 @@ class ReinmavEnv(gym.Env):
 		# This will be used when implementing reinforcement controllers.
 		# self.low_state = np.array([self.min_position, -self.max_speed])
 		# self.high_state = np.array([self.max_position, self.max_speed])
-		# self.viewer = None
+		self.viewer = None
 		# self.action_space = spaces.Box(low=self.min_action, high=self.max_action, shape=(1,),dtype=np.float32)
 		# self.observation_space = spaces.Box(low=self.low_state, high=self.high_state, dtype=np.float32)
 
@@ -319,4 +319,13 @@ class ReinmavEnv(gym.Env):
 		return np.array(self.state)
 
 	def render(self, mode='human', close=False):
-		print("render() called")
+		from mpl_toolkits.mplot3d import axes3d, Axes3D
+		# print("render() called")
+		if self.viewer is None:
+			self.viewer = plt.figure(5)
+		ax = Axes3D(self.viewer)
+		ax.scatter(self.state[0], self.state[1], self.state[2], zdir='y', label='Quadrotor Position')
+		ax.set_xlim([-5.0, 5.0])
+		ax.set_ylim([-5.0, 5.0])
+		ax.set_zlim([0.0, 10.0])
+		return plt.pause(0.01)

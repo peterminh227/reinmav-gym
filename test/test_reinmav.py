@@ -36,6 +36,7 @@ class Environments(unittest.TestCase):
 			#print("step=",i)
 		 	#env.step(env.action_space.sample()) # take a random action
 			env.step() # take a random action
+			env.render()
 		end_t=timer()
 		print("simulation time=",end_t-start_t)
 		env.plot_state()
