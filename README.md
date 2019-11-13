@@ -137,6 +137,8 @@ python -m gym_reinmav.run --alg=ppo2 --env=quadrotor2d-v0 --network=mlp --play
 ```
 For basic usages on `baslines`, refer to this [repo](https://github.com/openai/baselines)
 ### Hints from Minh
+```
 curl https://bootstrap.pypa.io/get-pip.py | python3.6 - --user
 sudo pip3 install mujoco-py==1.50.1.56
 sudo pip install --upgrade setuptools 
+```
